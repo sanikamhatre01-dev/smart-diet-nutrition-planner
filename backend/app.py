@@ -1,22 +1,28 @@
+from flask import Flask, jsonify
+from sqlalchemy import text
+
+from database.database import engine
+
 from backend.routes.user_routes import user_bp
 from backend.routes.health_routes import health_bp
 from backend.routes.goal_routes import goal_bp
 from backend.routes.food_routes import food_bp
 from backend.routes.meal_routes import meal_bp
 from backend.routes.tracking_routes import tracking_bp
-from flask import Flask, jsonify
-from sqlalchemy import text
-
-from database.database import engine
+from backend.routes.preference_routes import preference_bp
+from backend.routes.category_routes import category_bp
 
 
 app = Flask(__name__)
+
 app.register_blueprint(user_bp)
 app.register_blueprint(health_bp)
 app.register_blueprint(goal_bp)
 app.register_blueprint(food_bp)
 app.register_blueprint(meal_bp)
 app.register_blueprint(tracking_bp)
+app.register_blueprint(preference_bp)
+app.register_blueprint(category_bp)
 
 
 @app.route("/")
